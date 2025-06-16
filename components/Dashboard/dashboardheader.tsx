@@ -17,7 +17,7 @@ import { Badge } from "@/components/ui/badge";
 
 export function DashboardHeader() {
   return (
-    <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 space-x-64">
+    <header className="border-b  bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center px-6 space-x-64">
         <div className="flex items-center -space-x-52 flex-1 ">
           <div className="relative w-64">
@@ -27,16 +27,16 @@ export function DashboardHeader() {
         </div>
 
         <div className="flex items-center space-x-4">
-         
+
 
           <Button variant="ghost" size="icon" className="relative">
-          <IoIosMail className="h-14 w-7" />
-           <Badge className="absolute -top-1 -right-1 h-4 w-4 rounded-full p-0 text-xs">
+            <IoIosMail className="h-14 w-7" />
+            <Badge className="absolute -top-1 -right-1 h-4 w-4 rounded-full p-0 text-xs">
               1
             </Badge>
           </Button>
 
-           <Button variant="ghost" size="icon" className="relative">
+          <Button variant="ghost" size="icon" className="relative">
             <Bell className="h-4 w-4" />
             <Badge className="absolute -top-1 -right-1 h-4 w-4 rounded-full p-0 text-xs">
               1
