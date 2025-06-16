@@ -2,9 +2,10 @@
 
 import type * as React from "react"
 import { Home, Settings, Package, ShoppingCart, Users, BarChart3, HelpCircle } from "lucide-react"
+import { MdDarkMode } from "react-icons/md";
+import { GrSun } from "react-icons/gr";
 import { useTheme } from "next-themes"
 import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
-
 import {
     Sidebar,
     SidebarContent,
@@ -22,6 +23,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Switch } from "@/components/ui/switch"
 import Link from "next/link"
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible" // Import Collapsible components
 
 const data = {
     company: {
@@ -109,7 +111,6 @@ export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sideb
                                 <div className="grid flex-1 text-left text-sm leading-tight">
                                     <span className="truncate text-xs">Company</span>
                                     <span className="truncate font-semibold">{data.company.name}</span>
-
                                 </div>
                             </Link>
                         </SidebarMenuButton>
@@ -124,12 +125,37 @@ export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sideb
                             <SidebarMenu>
                                 {group.items.map((item) => (
                                     <SidebarMenuItem key={item.title}>
-                                        <SidebarMenuButton asChild>
-                                            <Link href={item.url}>
-                                                <item.icon />
-                                                <span>{item.title}</span>
-                                            </Link>
-                                        </SidebarMenuButton>
+                                        {item.items ? (
+                                            <Collapsible defaultOpen className="group space-y-1">
+                                                <CollapsibleTrigger asChild>
+                                                    <SidebarMenuButton className="flex items-center gap-2">
+                                                        <item.icon className="h-4 w-4" />
+                                                        <span className="font-semibold">{item.title}</span>
+                                                    </SidebarMenuButton>
+                                                </CollapsibleTrigger>
+                                                <CollapsibleContent className="ml-4 border-l border-muted pl-4 space-y-1">
+                                                    {item.items.map((subItem) => (
+                                                        <SidebarMenuItem key={subItem.title}>
+                                                            <SidebarMenuButton asChild>
+                                                                <Link
+                                                                    href={subItem.url}
+                                                                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                                                >
+                                                                    {subItem.title}
+                                                                </Link>
+                                                            </SidebarMenuButton>
+                                                        </SidebarMenuItem>
+                                                    ))}
+                                                </CollapsibleContent>
+                                            </Collapsible>
+                                        ) : (
+                                            <SidebarMenuButton asChild>
+                                                <Link href={item.url} className="flex items-center gap-2">
+                                                    <item.icon className="h-4 w-4" />
+                                                    <span>{item.title}</span>
+                                                </Link>
+                                            </SidebarMenuButton>
+                                        )}
                                     </SidebarMenuItem>
                                 ))}
                             </SidebarMenu>
@@ -137,10 +163,13 @@ export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sideb
                     </SidebarGroup>
                 ))}
             </SidebarContent>
+
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <div className="flex items-center justify-between p-2">
+                            <MdDarkMode />
+                            <GrSun />
                             <span className="text-sm">Dark Mode</span>
                             <Switch checked={theme === "dark"} onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")} />
                         </div>
