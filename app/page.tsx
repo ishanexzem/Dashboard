@@ -1,11 +1,20 @@
 import Image from "next/image";
-import { DashboardHeader } from "@/components/Dashboard/dashboardheader"
+
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { DashboardSidebar } from "@/components/Dashboard/dashboardsidebar";
+import { DashboardHeader } from "@/components/Dashboard/dashboardheader";
+
 
 
 export default function Home() {
   return (
-   <div className="flex h-screen bg-background">
-    <DashboardHeader/>
-   </div>
+    <div className="flex h-screen bg-background">
+      <SidebarProvider>
+        <DashboardSidebar />
+      </SidebarProvider>
+      <DashboardHeader />
+
+
+    </div>
   );
 }
