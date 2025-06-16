@@ -3,6 +3,7 @@
 import type * as React from "react"
 import { Home, Settings, Package, ShoppingCart, Users, BarChart3, HelpCircle } from "lucide-react"
 import { useTheme } from "next-themes"
+import { TbLayoutSidebarLeftCollapseFilled } from "react-icons/tb";
 
 import {
     Sidebar,
@@ -95,15 +96,20 @@ export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sideb
         <Sidebar variant="inset" {...props}>
             <SidebarHeader>
                 <SidebarMenu>
+                    <SidebarMenuItem className="flex flex-row space-x-4 m-4">
+                        <h1 className="font-bold text-2xl">||NexBoard</h1>
+                        <TbLayoutSidebarLeftCollapseFilled className="h-6 w-6 " />
+                    </SidebarMenuItem>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
                             <Link href="/dashboard">
-                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                                <div className="flex aspect-square size-8 items-center justify-center rounded-full bg-sidebar-primary text-sidebar-primary-foreground">
                                     <span className="font-bold">{data.company.logo}</span>
                                 </div>
                                 <div className="grid flex-1 text-left text-sm leading-tight">
-                                    <span className="truncate font-semibold">{data.company.name}</span>
                                     <span className="truncate text-xs">Company</span>
+                                    <span className="truncate font-semibold">{data.company.name}</span>
+
                                 </div>
                             </Link>
                         </SidebarMenuButton>
