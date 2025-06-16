@@ -16,10 +16,7 @@ export default function Home() {
       </SidebarProvider>
     </div>
    <main>
-     <div>
-      <h1 className="text-lg text-white font-bold">Dashboard</h1>
-      <p className="text-sm text-gray-700 font-semibold">Dashboard</p>
-     </div>
+    
    </main>
     </div>
   );
