@@ -8,14 +8,16 @@ import { DashboardHeader } from "@/components/Dashboard/dashboardheader";
 
 export default function Home() {
   return (
-    <div className="flex h-screen bg-background jutsify-between">
+    <div>
+    <div className="flex h-screen bg-background justify-center">
       <SidebarProvider>
         <DashboardSidebar/>
-        <DashboardHeader />
+         <DashboardHeader />
       </SidebarProvider>
+    </div>
+   <main>
     
-
-
+   </main>
     </div>
   );
 }

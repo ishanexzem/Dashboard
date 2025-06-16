@@ -57,7 +57,7 @@ export function DashboardHeader() {
                 <div className="flex flex-col space-y-1">
                   <p className="text-sm font-medium leading-none">Isha Rawat</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    Admin
+                    isha@nexzem.com
                   </p>
                 </div>
               </DropdownMenuLabel>
